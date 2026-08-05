@@ -5,7 +5,7 @@ import ThemeToggle from './ThemeToggle'; // Assuming you drop the toggle compone
 
 const Layout = ({ children }) => {
   return (
-    <div className="flex h-screen bg-slate-50 dark:bg-gray-900 transition-colors duration-200">
+    <div className="flex h-screen bg-transparent transition-colors duration-200">
       
       {/* Left Navigation */}
       <Sidebar />

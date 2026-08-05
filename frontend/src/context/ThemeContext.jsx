@@ -3,18 +3,20 @@ import React, { createContext, useState, useEffect, useContext } from 'react';
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  // Check local storage first, default to 'light'
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark'); // Defaulting to dark
 
   useEffect(() => {
     const root = window.document.documentElement;
-    // Strip out all our custom theme classes so they don't stack
     root.classList.remove('light', 'dark', 'theme-midnight', 'theme-split');
     
-    // Add the active one
-    root.classList.add(theme === 'dark' ? 'dark' : theme === 'light' ? 'light' : `theme-${theme}`);
+    // If it's anything other than light, we need Tailwind's dark classes to apply to the UI cards
+    if (theme !== 'light') {
+      root.classList.add('dark');
+    }
     
-    // Save to local storage so it remembers when you refresh
+    // Add the specific custom theme background class
+    root.classList.add(`theme-${theme}`);
+    
     localStorage.setItem('theme', theme);
   }, [theme]);
 
