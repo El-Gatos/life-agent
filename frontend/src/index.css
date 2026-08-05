@@ -2,61 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --color-primary: #3b82f6;
+/* 
+  The "Split" Theme Background 
+  A hard diagonal cut right down the middle 
+*/
+.theme-split body {
+  background: linear-gradient(110deg, #f8fafc 50%, #0f172a 50%);
+  background-attachment: fixed;
 }
 
-* {
-  @apply transition-colors duration-200;
+/* 
+  Midnight Theme Background 
+  For when standard dark mode isn't dark enough
+*/
+.theme-midnight body {
+  background-color: #020617; /* Slate 950 */
 }
 
-html {
-  @apply scroll-smooth;
+/* Custom Scrollbar to match the vibe */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
 }
-
-body {
-  @apply bg-[#f8f9fa] text-[#1e293b] font-sans;
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade {
-  animation: fadeIn 0.3s ease-out;
-}
-
-.animate-slide-up {
-  animation: slideUp 0.4s ease-out;
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
+.custom-scrollbar::-webkit-scrollbar-track {
   background: transparent;
 }
-
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(156, 163, 175, 0.5);
+  border-radius: 20px;
 }
