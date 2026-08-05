@@ -28,3 +28,4 @@ coverage/
 .hypothesis/
 gmail_token.pickle
 credentials.json
+gcal_token.pickle
