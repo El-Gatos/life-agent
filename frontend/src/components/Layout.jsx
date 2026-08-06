@@ -18,13 +18,12 @@ const Layout = ({ children }) => {
           
           {/* Placeholder for your Home / Time Table tabs */}
           <nav className="flex gap-4">
-            <button className="px-4 py-2 font-bold text-indigo-600 bg-indigo-50 dark:bg-indigo-900/30 rounded-lg">Home</button>
+            <button className="px-4 py-2 font-bold text-blue-600 bg-blue-50 dark:bg-blue-900/30 rounded-lg">Home</button>
             <button className="px-4 py-2 font-medium text-gray-500 dark:text-gray-400">Time Table</button>
           </nav>
 
-          {/* Right side of header: Password, Logout, and the Toggle */}
+          {/* Right side of header: Logout and the Toggle */}
           <div className="flex items-center gap-6">
-            <button className="text-sm font-bold text-gray-700 dark:text-gray-300">Change Password</button>
             <button className="text-sm font-bold text-gray-700 dark:text-gray-300">Logout</button>
             
             {/* The actual toggle component */}

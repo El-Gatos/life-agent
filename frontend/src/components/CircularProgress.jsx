@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CircularProgress = ({ percentage, colorClass }) => {
+const CircularProgress = ({ percentage }) => {
   // SVG math to calculate the stroke length
   const radius = 36;
   const circumference = 2 * Math.PI * radius;
@@ -30,7 +30,7 @@ const CircularProgress = ({ percentage, colorClass }) => {
           strokeDasharray={circumference}
           strokeDashoffset={offset}
           strokeLinecap="round"
-          className={`${colorClass} transition-all duration-1000 ease-in-out`}
+          className="text-gray-700 dark:text-blue-500 transition-all duration-1000 ease-in-out"
         />
       </svg>
       {/* Centered Percentage Text */}

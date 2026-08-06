@@ -6,11 +6,11 @@ import { PenTool, Calculator, Cpu, Database, Shield } from 'lucide-react';
 export default function Dashboard() {
   // Mock data mapping perfectly to your screenshot
   const attendanceData = [
-    { id: 1, icon: PenTool, title: 'Engineering Graphics', fraction: '12/14', percentage: 86, color: 'text-indigo-500' },
-    { id: 2, icon: Calculator, title: 'Mathematical Engineering', fraction: '27/29', percentage: 93, color: 'text-rose-500' },
-    { id: 3, icon: Cpu, title: 'Computer Architecture', fraction: '27/30', percentage: 81, color: 'text-emerald-500' },
-    { id: 4, icon: Database, title: 'Database Management', fraction: '24/25', percentage: 96, color: 'text-blue-500' },
-    { id: 5, icon: Shield, title: 'Network Security', fraction: '25/27', percentage: 92, color: 'text-purple-500' },
+    { id: 1, icon: PenTool, title: 'Engineering Graphics', fraction: '12/14', percentage: 86 },
+    { id: 2, icon: Calculator, title: 'Mathematical Engineering', fraction: '27/29', percentage: 93 },
+    { id: 3, icon: Cpu, title: 'Computer Architecture', fraction: '27/30', percentage: 81 },
+    { id: 4, icon: Database, title: 'Database Management', fraction: '24/25', percentage: 96 },
+    { id: 5, icon: Shield, title: 'Network Security', fraction: '25/27', percentage: 92 },
   ];
 
   const timetableData = [
@@ -48,7 +48,6 @@ export default function Dashboard() {
                 title={stat.title}
                 fraction={stat.fraction}
                 percentage={stat.percentage}
-                colorClass={stat.color}
               />
             ))}
           </div>
