@@ -20,45 +20,35 @@ export default function DeadlineCard({ deadline, onStatusChange }) {
     }
   };
 
-  const getPriorityBg = (priority) => {
+  const getPriorityClasses = (priority) => {
     const colors = {
-      high: 'bg-[#fee2e2]',
-      medium: 'bg-[#fef3c7]',
-      low: 'bg-[#dcfce7]',
-    };
-    return colors[priority] || colors.medium;
-  };
-
-  const getPriorityText = (priority) => {
-    const colors = {
-      high: 'text-[#991b1b]',
-      medium: 'text-[#b45309]',
-      low: 'text-[#166534]',
+      high: 'bg-red-50 text-red-700 dark:bg-red-500/10 dark:text-red-400',
+      medium: 'bg-amber-50 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400',
+      low: 'bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400',
     };
     return colors[priority] || colors.medium;
   };
 
   const getUrgencyLeft = () => {
-    if (isOverdue) return 'border-l-4 border-l-[#ef4444]';
-    if (daysUntil <= 1) return 'border-l-4 border-l-[#f59e0b]';
-    if (daysUntil <= 3) return 'border-l-4 border-l-[#f59e0b]';
-    return 'border-l-4 border-l-[#d1d5db]';
+    if (isOverdue) return 'border-l-4 border-l-red-500';
+    if (daysUntil <= 3) return 'border-l-4 border-l-amber-500';
+    return 'border-l-4 border-l-gray-200 dark:border-l-gray-600';
   };
 
   return (
-    <div className={`bg-white p-5 rounded-lg border border-[#e2e8f0] shadow-sm hover:shadow-md transition-all animate-fade ${getUrgencyLeft()}`}>
+    <div className={`bg-white dark:bg-gray-800 p-5 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm dark:shadow-none hover:shadow-md dark:hover:bg-gray-800/80 transition-all animate-fade ${getUrgencyLeft()}`}>
       <div className="flex justify-between items-start mb-3">
         <div>
-          <h3 className="font-semibold text-[#1e293b]">{deadline.title}</h3>
-          <p className="text-xs text-[#94a3b8] mt-1">{format(new Date(deadline.due_date), 'MMM d, yyyy')}</p>
+          <h3 className="font-semibold text-gray-900 dark:text-white">{deadline.title}</h3>
+          <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">{format(new Date(deadline.due_date), 'MMM d, yyyy')}</p>
         </div>
-        <span className={`px-2.5 py-1 rounded text-xs font-medium ${getPriorityBg(deadline.priority)} ${getPriorityText(deadline.priority)}`}>
+        <span className={`px-2.5 py-1 rounded text-xs font-medium ${getPriorityClasses(deadline.priority)}`}>
           {deadline.priority}
         </span>
       </div>
 
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2 text-sm text-[#64748b]">
+        <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
           <Clock className="w-4 h-4" />
           {isOverdue ? `${Math.abs(daysUntil)}d overdue` : daysUntil === 0 ? 'Due today' : `${daysUntil}d left`}
         </div>
@@ -69,21 +59,21 @@ export default function DeadlineCard({ deadline, onStatusChange }) {
               <button
                 onClick={() => handleStatusChange('in_progress')}
                 disabled={isLoading}
-                className="px-3 py-1.5 text-xs font-medium rounded bg-[#f1f5f9] text-[#64748b] hover:bg-[#e2e8f0] transition-colors"
+                className="px-3 py-1.5 text-xs font-medium rounded bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
               >
                 Start
               </button>
               <button
                 onClick={() => handleStatusChange('completed')}
                 disabled={isLoading}
-                className="px-3 py-1.5 text-xs font-medium rounded bg-[#3b82f6] text-white hover:bg-[#2563eb] transition-colors"
+                className="px-3 py-1.5 text-xs font-medium rounded bg-gray-900 dark:bg-blue-600 text-white hover:bg-gray-800 dark:hover:bg-blue-500 transition-colors"
               >
                 Done
               </button>
             </>
           )}
           {deadline.status === 'completed' && (
-            <div className="flex items-center gap-1 px-3 py-1.5 text-xs font-medium bg-[#dcfce7] text-[#166534] rounded">
+            <div className="flex items-center gap-1 px-3 py-1.5 text-xs font-medium bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 rounded">
               <CheckCircle2 className="w-3.5 h-3.5" />
               Done
             </div>
